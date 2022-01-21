@@ -19,7 +19,7 @@ open class DGCarouselFlowLayout: UICollectionViewFlowLayout {
     
     @IBInspectable open var sideItemScale: CGFloat = 1
     @IBInspectable open var sideItemAlpha: CGFloat = 1
-    @IBInspectable open var sideItemShift: CGFloat = 0.0
+    @IBInspectable open var sideItemShift: CGFloat = 0
     open var spacingMode = DGCarouselFlowLayoutSpacingMode.fixed(spacing: 40)
     
     fileprivate var state = LayoutState(size: CGSize.zero, direction: .horizontal)
@@ -80,7 +80,7 @@ open class DGCarouselFlowLayout: UICollectionViewFlowLayout {
         guard let collectionView = self.collectionView else { return attributes }
         let isHorizontal = (self.scrollDirection == .horizontal)
         
-        let collectionCenter = isHorizontal ? collectionView.frame.size.width/2 : collectionView.frame.size.height/2
+        let collectionCenter = (isHorizontal ? collectionView.frame.size.width : collectionView.frame.size.height)/2
         let offset = isHorizontal ? collectionView.contentOffset.x : collectionView.contentOffset.y
         let normalizedCenter = (isHorizontal ? attributes.center.x : attributes.center.y) - offset
         
